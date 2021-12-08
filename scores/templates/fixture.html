@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <h2>{{fixtures.first.tournament.name}} Scores and Fixtures</h2>
+    <form class="input-group my-4" action="">
+        <input type="text" id="search-input" class="form-control" name="search" placeholder="enter team">
+        <span class="input-group-text border-0 bg-transparent" id="search-addon" style="cursor: pointer;">
+            <i class="bi bi-search"></i>
+        </span>
+    </form>
+
+    {% if all_completed %}
+        <div id="fixturelist-container">
+    {% else %}
+    <div id="fixturelist-container" hx-get="{% url 'fixture' %}" hx-trigger="every 5s" hx-swap="innerHTML">
+    {% endif %}
+        {% include 'partials/fixture-list.html' %}
+    </div>
+    
+</main>
+
+{% endblock content %}
