@@ -13,7 +13,7 @@ class Command(BaseCommand):
             time.sleep(random.randint(1,6))
 
             # select how many fixtures we're going to update
-            update_count = random.randint(1,6)
+            update_count = random.randint(1,10)
 
             # order_by("?") gets random order of rows
             fixtures = Fixture.objects.filter(game_finished=False).order_by("?")
